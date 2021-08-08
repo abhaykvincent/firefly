@@ -1,0 +1,14 @@
+@mixin button-hollow{
+    padding: 0.4em 1rem;
+    margin-top: 0.5rem;
+    color: #EA665E;
+    border: 1px solid #EA665E;
+    border-radius: 2rem;
+    font-size: 0.8rem;
+    text-align: center;
+  }
+@mixin grid-middle-center{
+    display: grid;
+    justify-content: center;
+    align-content: center;
+  }

@@ -1,0 +1,326 @@
+@import './__variables.scss';
+@import './__mixins.scss';
+*{
+    transition-duration: 0.1s;
+}
+a:visited{
+    color: inherit;
+}
+a{
+    
+    text-decoration: none;
+}
+h1{
+    margin: 0;
+}
+body{
+    width:100vw;
+    color: white;
+    background: $background-dark-10;
+}
+.dashboard{
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 2fr  10fr;
+    .sidebar{
+        display: grid;
+        align-content: start;
+        grid-row-gap: 3em;
+
+        padding: 0px $body-padding-x;
+        .logo{
+            @include grid-middle-center;
+            height: $header-height;
+            a{
+
+            height: $header-height;
+            }
+        }
+        .quick-actions{
+            display: grid;
+            grid-row-gap: 1em;
+            .action{
+                display: grid;
+                grid-template-columns: auto 1fr auto;
+                align-items: center;
+                grid-column-gap: 1em;
+                .count{
+                    &-display{
+                    display: grid;
+                    justify-content: center;
+                    align-content: center;
+                    height: 3em;
+                    width: 3em;
+                    border-radius: 5em;
+                    border: 2px solid white;
+                    }
+                }
+                .add{
+                    &-button{
+                    display: grid;
+                    justify-content: center;
+                    align-content: center;
+                    height: 1em;
+                    width: 1em;
+                    border-radius: 5em;
+                    font-size: 2em;
+                    }
+                }
+            }
+        }
+        .quick-displays{
+            display: grid;
+            grid-row-gap: 2em;
+            .quick-display{ 
+                .display-label{
+                    margin-bottom: 1em;
+                    font-size: 1.2em;
+                }
+                .content{
+                    margin-bottom: 1em;
+                    .content-label{
+                        margin-bottom: 0.5em;
+                        font-size: 0.8em;
+                        color: rgba(255, 255, 255, 0.5);
+                    }
+                    .content-list{
+                        &.list{
+                            display: grid;
+                            grid-row-gap: 1em;
+                            padding: 1em;
+                            background-color: rgba(255, 255, 255, 0.1);
+                            border-radius: 0.4rem;
+                            font-size: 0.9em;
+                        }
+                    } 
+                    .see-all{
+                        @include button-hollow;
+                        &.full{
+                            display: block;
+                        }
+                        &.small{
+                            display: inline-block;
+                        }
+                    }
+                } 
+            }
+        }
+    }
+    main{
+        overflow: hidden;
+        width:100%;
+        min-height: 110vh;
+        header{
+            display: grid;
+            grid-template-columns: 3fr 9fr;
+            align-content: center;
+            
+            height: $header-height;
+            padding-right: 2rem;
+            
+            .search{
+
+            }
+            .settings-panel{
+                display: grid;
+                grid-template-columns: auto auto ;
+                justify-content: end;
+            }
+        }
+        .main-panel{
+            display: grid;
+            grid-template-columns: repeat(12,1fr);
+            grid-gap: 1em;
+            background-color: rgba(0, 0, 0, 0.1);
+            padding: 1em;
+            section{
+                padding: 1em;
+                background-color: rgba(255, 255, 255, 0);;
+            }
+            .title{
+                display:grid;
+                grid-column-start: span 11;
+            }
+            .flexible-tile{
+                display:grid;
+                grid-column: 1 / span 11;
+                min-height: 10vh;
+                margin: 0px 1rem;
+                border-radius: 0.4rem;
+                background-color: rgba(255, 255, 255, 0.1);;
+            }
+            .contacts{
+                display:grid;
+                grid-column-start: span 6;
+                min-height: 10vh;
+            }
+            .timeline{
+                display:grid;
+                grid-column-start: span 5;
+                min-height: 10vh;
+            }
+            
+            .additional-panel{
+                transform: translateX(100%);
+                overflow: hidden;
+                display:grid;
+                grid-row: 1 / 2;
+                grid-column: 12 / 13;
+                opacity: 0;
+                background-color: rgba(255, 255, 255, 0.1);
+                border-radius: 0.4rem;
+            }
+            .loading{
+                position: fixed;
+                bottom: 3px;
+                left: 0px;
+                width: 100vw;
+                height: 4px;
+                .value{
+                    display: block;
+                    float: left;
+                    height: 4px;
+                    width: 1%;
+                    background-color: #EA665E;
+                    box-shadow:0px -5px 10px 0px black
+                }
+            }
+
+
+
+
+
+            .content-list{
+                &.list{
+                    display: grid;
+                    grid-row-gap: 1em;
+                    padding: 1em;
+                    background-color: rgba(255, 255, 255, 0.15);
+                    border-radius: 0.4rem;
+                    font-size: 0.9em;
+                }
+            } 
+            &.with-additional-panel__middleanimation{
+                
+                .additional-panel{
+                    animation-name: panel__middleanimation ;
+                    animation-duration: 1s;
+                    animation-timing-function: ease-in-out;
+                    
+                    *{
+
+                        animation-name: panel__fade-animation ;
+                        animation-duration: 1s;
+                        animation-timing-function: ease-in-out;
+                    }
+                }
+                .loading.active .value{
+                    animation-name: loading;
+                    animation-duration: 2s;
+                    animation-timing-function: ease-in-out;
+                }
+            }
+
+            &.with-additional-panel{
+                .title{
+                    display:grid;
+                    grid-column-start: span 7;
+                }
+                .flexible-tile{
+                    display:grid;
+                    grid-column-start: span 7;
+                    min-height: 10vh;
+                }
+                .contacts{
+                    display:grid;
+                    grid-column-start: span 3;
+                    min-height: 10vh;
+                }
+                .timeline{
+                    display:grid;
+                    grid-column-start: span 4;
+                    min-height: 10vh;
+                }
+                
+            .additional-panel{
+                transform: translateX(0%);
+                overflow:visible;
+                display:grid;
+                grid-row: 1 / 5;
+                grid-column: 8 / 13;
+                opacity: 1;
+                transition-duration: 0.2s;
+            }
+
+            }
+        }
+
+    }
+}
+
+
+
+
+.testing-tools{
+    position: fixed;
+    bottom: 10px;
+    right: 10px;;
+    .button-test{
+        @include button-hollow;
+        &.full{
+            display: block;
+        }
+        &.small{
+            display: inline-block;
+        }
+    }
+}
+
+
+
+@keyframes panel__middleanimation{
+    0%{
+        
+        transform: translateX(0%) rotateY(0deg);
+    }
+    40%{
+        transform: translateX(50%) rotateY(90deg);
+        background-color: rgba(0, 0, 0, 0.01);
+    }
+    100%{
+        transform: translateX(0%)  rotateY(0deg);
+    }
+}
+
+@keyframes panel__fade-animation{
+    0%{
+        opacity: 0;
+    }
+    5%{
+        opacity: 0;
+    }
+    40%{
+        opacity: 0;
+    }
+    60%{
+        opacity: 1;
+    }
+    80%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+@keyframes loading{
+    0%{
+        width: 0%;
+    }
+    50%{
+        width: 100%;
+    }
+    100%{
+        width: 100%;
+    }
+}
